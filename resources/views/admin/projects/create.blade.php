@@ -17,10 +17,10 @@
             <input value="{{old('title')}}" type="text" name="title" id="title" class="form-control mb-3 @error('title') is-invalid @enderror" aria-describedby="helpId">
             @error('title')<div class="alert alert-danger">{{ $message }}</div>@enderror
 
-
+            <!-- select Type -->
             <div class="mb-3">
                 <label for="type_id" class="form-label">Types</label>
-                <select class="form-select form-select-lg @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
+                <select class="form-select form-select-sm @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
                     <option value="" selected>Select one</option>
 
                     @foreach ($types as $type)
@@ -30,6 +30,24 @@
                 </select>
             </div>
             @error('type_id')<div class="alert alert-danger" role="alert">{{$message}}</div>@enderror
+
+            <!-- select Technologies -->
+            <div class="mb-3">
+                <label for="technologies" class="form-label">Technologies</label>
+                <select multiple class="form-select form-select-sm" name="technologies[]" id="technologies">
+                    <option value="" disabled>Select a technology</option>
+                    @forelse ($technologies as $technology)
+
+                    @if ($errors->any())
+                    <option value="{{$technology->id}}" {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>{{$technology->name}}</option>
+                    @else
+                    <option value="{{$technology->id}}">{{$technology->name}}</option>
+                    @endif
+                    @empty
+                    <option value="" disabled>No technologies in the system</option>
+                    @endforelse
+                </select>
+            </div>
 
             <label for="cover_image" class="form-label">Image</label>
             <small class="form-text text-muted ms-2">Upload cover image - max 512 Kb</small>
