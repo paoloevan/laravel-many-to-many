@@ -32,6 +32,7 @@ class UpdateProjectRequest extends FormRequest
                 'max:255'
             ],
             'type_id' => 'nullable|exists:types,id',
+            'tags' => 'nullable|exists:technologies,id',
             'cover_image' => 'nullable|max:512',
             'team' => 'nullable|max:255',
             'duration' => 'nullable|max:255',
