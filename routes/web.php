@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TechnologyController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -30,6 +31,9 @@ Route::middleware('auth', 'verified')
         Route::resource('projects', ProjectController::class)->parameters([
             'projects' => 'project:slug_title'
         ]);
+        Route::resource('technologies', TechnologyController::class)->parameters([
+            'technologies' => 'technology:slug'
+        ])->except(['edit', 'show', 'create']);
     });
 
 require __DIR__ . '/auth.php';
