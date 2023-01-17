@@ -22,9 +22,9 @@
                                 <td scope="row">{{ $tech->id }}</td>
                                 <td>{{ $tech->name }}</td>
                                 <td>
-                                    <form action="{{ route('admin.technologies.destroy', $tech->id) }}" method="post">
+                                    <form action="{{ route('admin.technologies.destroy', $tech->slug) }}" method="post">
                                         @csrf
-                                        @method('destory')
+                                        @method('DELETE')
                                         <input class="btn btn-sm btn-danger" type="submit" value="Delete">
                                     </form>
                                 </td>
