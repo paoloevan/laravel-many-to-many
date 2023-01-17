@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
 {
@@ -38,7 +39,13 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->name);
+        $tech['name'] = $request->name;
+        $tech['slug'] = Str::slug($request->name);
+
+        Technology::create($tech);
+
+        return to_route('admin.technologies.index');
     }
 
     /**

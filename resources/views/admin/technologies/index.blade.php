@@ -4,7 +4,23 @@
     <div class="d-flex">
         @include('admin.partials.navbar')
 
-        <main class="ms-sm-auto col-lg-5 px-md-4">
+        <div class="ms-sm-auto col-lg-5 px-md-4">
+            <form action="{{ route('admin.technologies.store') }}" method="post">
+                @csrf
+
+                <div class="d-flex">
+                    <div class="me-5">
+                        <input name="name" type="text" id="name" class="form-control" type="text"
+                            placeholder="New technology...">
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary" type="submit">Add technology</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="ms-sm-auto col-lg-5 px-md-4">
 
             <div class="table-responsive-sm">
                 <table class="table table-warning">
@@ -37,6 +53,6 @@
             </div>
 
 
-        </main>
+        </div>
     </div>
 @endsection
