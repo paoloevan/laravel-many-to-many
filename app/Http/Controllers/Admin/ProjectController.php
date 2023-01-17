@@ -45,9 +45,9 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        // dd($request);
 
         $val_data = $request->validated();
+        // dd($val_data);
 
         if ($request->hasFile('cover_image')) {
 
@@ -105,6 +105,7 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $val_data = $request->validated();
+        // dd($val_data);
 
         if ($request->hasFile('cover_image')) {
 
@@ -113,7 +114,6 @@ class ProjectController extends Controller
             }
 
             $img_path = Storage::disk('public')->put('uploads', $val_data['cover_image']);
-            // dd($img_path);
 
             $val_data['cover_image'] = $img_path;
         }

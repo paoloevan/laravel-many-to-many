@@ -50,7 +50,7 @@
                                     {{ $technology->name }}
                                 </option>
                             @else
-                                <option value="{{ $projects->technologies->contains($technology->id) ? 'selected' : '' }}">
+                                <option value="{{ $project->technologies->contains($technology->id) ? 'selected' : '' }}">
                                     {{ $technology->name }}</option>
                             @endif
                         @empty
